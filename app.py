@@ -22,7 +22,8 @@ def run_kafka_consumer(topic_name, current_app):
     kafka_consumer.consume()
 
 
-with app.app_context():
+@app.before_first_request
+def run_kafka():
     try:
         for topic, topic_config in app.config['TOPICS_CONFIGURATION'].items():
             consumers_pool = ThreadPoolExecutor(max_workers=topic_config['max_consumers'])
