@@ -1,0 +1,8 @@
+{
+    "namespace": "event.sample", "name": "event", "type": "record",
+    "fields" : [
+                    { "name" : "eventName" , "type" : "string" },
+                    { "name" : "eventId" , "type" : "int" },
+                    { "name" : "userId" , "type" : "int" }
+               ]
+}
