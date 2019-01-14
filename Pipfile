@@ -10,6 +10,9 @@ flask = "*"
 ansicolors = "*"
 requests = "*"
 confluent-kafka = {extras = ["avro"], version = "*"}
+pyspark = "*"
+cassandra-driver = "*"
+pyspark-stubs = "*"
 
 [requires]
 python_version = "3.5"

@@ -22,14 +22,15 @@ def run_kafka_consumer(topic_name, current_app):
     kafka_consumer.consume()
 
 
-@app.before_first_request
-def run_kafka():
-    try:
-        for topic, topic_config in app.config['TOPICS_CONFIGURATION'].items():
-            consumers_pool = ThreadPoolExecutor(max_workers=topic_config['max_consumers'])
-            consumers_pool.submit(run_kafka_consumer, **{'topic_name': topic, 'current_app': app})
-    except Exception as e:
-        app.logger.exception(e)
+# Uncomment below lines to use kafka consumers
+# @app.before_first_request
+# def run_kafka():
+#     try:
+#         for topic, topic_config in app.config['TOPICS_CONFIGURATION'].items():
+#             consumers_pool = ThreadPoolExecutor(max_workers=topic_config['max_consumers'])
+#             consumers_pool.submit(run_kafka_consumer, **{'topic_name': topic, 'current_app': app})
+#     except Exception as e:
+#         app.logger.exception(e)
 
 
 @app.before_request

@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "b4d95adb292b6a50e42547f654cfad80d5682115d16d6a036b62a69aa7d1ffb8"
+            "sha256": "28acd6126812bd849ec129414493a519a9d7a47660262516ddf7d90079f4d775"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -30,6 +30,13 @@
             ],
             "markers": "extra == 'avro'",
             "version": "==1.8.2"
+        },
+        "cassandra-driver": {
+            "hashes": [
+                "sha256:42bcb167a90da6604081872ef609a327a63273842da81120fc462de031155abe"
+            ],
+            "index": "pypi",
+            "version": "==3.16.0"
         },
         "certifi": {
             "hashes": [
@@ -172,6 +179,20 @@
             ],
             "version": "==1.1.0"
         },
+        "py4j": {
+            "hashes": [
+                "sha256:721189616b3a7d28212dfb2e7c6a1dd5147b03105f1fc37ff2432acd0e863fa5",
+                "sha256:a950fe7de1bfd247a0a4dddb9118f332d22a89e01e0699135ea8038c15ee1293"
+            ],
+            "version": "==0.10.7"
+        },
+        "pyspark": {
+            "hashes": [
+                "sha256:c9d7b7c5e91b13488b657e364ff392a80b2e374b182138e5ec8702a1822bffdc"
+            ],
+            "index": "pypi",
+            "version": "==2.4.0"
+        },
         "requests": {
             "hashes": [
                 "sha256:502a824f31acdacb3a35b6690b5fbf0bc41d63a24a45c4004352b0242707598e",
@@ -179,6 +200,13 @@
             ],
             "index": "pypi",
             "version": "==2.21.0"
+        },
+        "six": {
+            "hashes": [
+                "sha256:3350809f0555b11f552448330d0b52d5f24c91a322ea4a15ef22629740f3761c",
+                "sha256:d16a0141ec1a18405cd4ce8b4613101da75da0e9a7aec5bdd4fa804d0e0eba73"
+            ],
+            "version": "==1.12.0"
         },
         "urllib3": {
             "hashes": [
