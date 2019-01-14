@@ -1,4 +1,3 @@
-from __future__ import print_function
 import datetime
 from pyspark import SparkConf
 from pyspark.streaming import StreamingContext
@@ -32,7 +31,7 @@ if __name__ == "__main__":
     conf.set("spark.cassandra.connection.host", "127.0.0.1")
 
     sc = SparkContext(conf=conf)
-    sc.setLogLevel("WARN")
+    sc.setLogLevel("ERROR")
 
     schema_registry_client = CachedSchemaRegistryClient(url='http://127.0.0.1:8081')
     serializer = MessageSerializer(schema_registry_client)
@@ -47,9 +46,12 @@ if __name__ == "__main__":
                                   valueDecoder=decoder)
     events = kvs.mapValues(lambda v: process_event(v))
     sqlContext = SQLContext(sc)
-    user_event_table = sqlContext.read.format("org.apache.spark.sql.cassandra").options(table="user_event", keyspace="events").load()
-    events.foreachRDD(lambda eventsRDD: sqlContext.createDataFrame(eventsRDD.map(lambda event: event[1]),
-                                                                   user_event_table.schema).write.format("org.apache.spark.sql.cassandra").mode('append').options(table="user_event", keyspace="events").save() if not eventsRDD.isEmpty() else None)
+    user_event_table = sqlContext.read.format("org.apache.spark.sql.cassandra").options(table="user_event",
+                                                                                        keyspace="events").load()
+    events.foreachRDD(lambda eventsRDD: sqlContext.createDataFrame(
+        eventsRDD.map(lambda event: event[1]), user_event_table.schema).
+                      write.format("org.apache.spark.sql.cassandra").mode('append').
+                      options(table="user_event", keyspace="events").save() if not eventsRDD.isEmpty() else None)
 
 str_ctxt.start()
 str_ctxt.awaitTermination()
