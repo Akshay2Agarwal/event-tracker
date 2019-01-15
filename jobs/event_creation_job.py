@@ -12,7 +12,7 @@ def process_event(event):
 
     user_event_map = {
         'user_id': int(event['userId']),
-        'group_id': int(event['eventId']),
+        'group_id': int(event['groupId']),
         'event_timestamp': datetime.datetime.now(),
         'name': event['eventName'],
         'details': {

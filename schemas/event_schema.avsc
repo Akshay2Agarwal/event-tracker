@@ -2,7 +2,7 @@
     "namespace": "event.sample", "name": "event", "type": "record",
     "fields" : [
                     { "name" : "eventName" , "type" : "string" },
-                    { "name" : "eventId" , "type" : "int" },
+                    { "name" : "groupId" , "type" : "int" },
                     { "name" : "userId" , "type" : "int" }
                ]
 }

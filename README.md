@@ -9,4 +9,5 @@
     SCHEMA_REGISTRY_URL = 'http://localhost:8081'
     
 ##### Run spark job to consume from topics:
-    spark-submit --packages org.apache.spark:spark-streaming-kafka-0-8_2.11:2.4.0,datastax:spark-cassandra-connector:2.4.0-s_2.11 --conf spark.cassandra.connection.host=127.0.0.1  service/event_creation_job.py 
+    spark-submit --packages org.apache.spark:spark-streaming-kafka-0-8_2.11:2.4.0,datastax:spark-cassandra-connector:2.4.0-s_2.11 --conf spark.cassandra.connection.host=127.0.0.1  jobs/event_creation_job.py
+    spark-submit --packages org.apache.spark:spark-streaming-kafka-0-8_2.11:2.4.0,datastax:spark-cassandra-connector:2.4.0-s_2.11 --conf spark.cassandra.connection.host=127.0.0.1  jobs/event_enrichment_job.py  

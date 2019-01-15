@@ -83,10 +83,10 @@ def after_request(response):
 @app.route("/user/<int:user_id>/event/<event_name>", methods=['POST'])
 def produce_event_controller(user_id, event_name):
     if event_name in app.config['EVENTS_WITH_SCHEMA']:
-        event_message = {'userId': user_id, 'eventName': event_name, 'eventId': app.config['EVENTS_ID'][event_name]}
+        event_message = {'userId': user_id, 'eventName': event_name, 'groupId': int(user_id)%2}
         produce_event_with_schema(app.config['TOPICS']['EVENTS_WITH_SCHEMA'], event_message)
     else:
-        event_message = {**{'userId': user_id, 'eventName': event_name, 'eventId': app.config['EVENTS_ID'][event_name]},
+        event_message = {**{'userId': user_id, 'eventName': event_name, 'groupId': int(user_id)%2},
                          **request.get_json()}
         produce_event(bytes(user_id), app.config['TOPICS']['EVENTS_WITHOUT_SCHEMA'], event_message)
     return '', 204
